@@ -29,8 +29,8 @@ public class PermissionController {
 	
 	@Autowired
 	PermissionService permissionService;
-	@Autowired
-	AuthService authService;
+//	@Autowired
+//	AuthService authService;
 	
 	@GetMapping()
 	public PageResult<Permission> getPermissions(Integer page, Integer limit, String searchKey, String searchValue) throws UnsupportedEncodingException{
