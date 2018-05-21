@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pers.myAuthweb.dao.UserMapper">
+	<resultMap id="BaseResultMap"
+		type="pers.myAuthweb.model.User">
+		<id column="user_id" property="userId" jdbcType="VARCHAR" />
+		<result column="user_account" property="userAccount"
+			jdbcType="VARCHAR" />
+		<result column="user_password" property="userPassword"
+			jdbcType="VARCHAR" />
+		<result column="user_nickname" property="userNickname"
+			jdbcType="VARCHAR" />
+		<result column="mobile_phone" property="mobilePhone"
+			jdbcType="VARCHAR" />
+		<result column="sex" property="sex" jdbcType="VARCHAR" />
+		<result column="user_status" property="userStatus"
+			jdbcType="INTEGER" />
+		<result column="create_time" property="createTime"
+			jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime"
+			jdbcType="TIMESTAMP" />
+		<result column="role_id" property="roleId" jdbcType="VARCHAR" />
+		<result column="token" property="token" jdbcType="VARCHAR" />
+		<!-- 关联属性 -->
+		<result column="role_name" property="roleName"
+			jdbcType="VARCHAR" />
+	</resultMap>
+	<!-- query user by userName -->
+	<select id="selectUserByUserName" resultMap="BaseResultMap">
+		SELECT
+		a.*,b.role_name FROM sys_user a LEFT JOIN sys_role b ON
+		a.role_id=b.role_id WHERE a.user_account=#{userAccount}
+	</select>
+	<!-- query all users -->
+	<select id="selectUsers" resultMap="BaseResultMap">
+		SELECT a.*,b.role_name FROM sys_user a,sys_role b WHERE a.role_id =
+		b.role_id
+		<if test="status!=null">AND a.user_status=#{status} </if>
+		<if
+			test="searchKey!=null and searchKey!='' and searchValue!=null and searchValue!=''">AND a.${searchKey} like '%${searchValue}%' </if>
+		ORDER BY a.create_time ASC
+	</select>
+
+	<!-- insert a user -->
+	<insert id="insertUser"
+		parameterType="pers.myAuthweb.model.User">
+		insert into sys_user (user_id, user_account,
+		user_password,
+		user_nickname, mobile_phone, sex,
+		user_status,
+		create_time, update_time,
+		role_id, token)
+		values
+		(#{userId,jdbcType=VARCHAR}, #{userAccount,jdbcType=VARCHAR},
+		#{userPassword,jdbcType=VARCHAR},
+		#{userNickname,jdbcType=VARCHAR},
+		#{mobilePhone,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR},
+		#{userStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{roleId,jdbcType=VARCHAR},
+		#{token,jdbcType=VARCHAR})
+	</insert>
+
+
+	<insert id="insertSelective"
+		parameterType="pers.myAuthweb.model.User">
+		insert into sys_user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="userAccount != null">
+				user_account,
+			</if>
+			<if test="userPassword != null">
+				user_password,
+			</if>
+			<if test="userNickname != null">
+				user_nickname,
+			</if>
+			<if test="mobilePhone != null">
+				mobile_phone,
+			</if>
+			<if test="sex != null">
+				sex,
+			</if>
+			<if test="userStatus != null">
+				user_status,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="roleId != null">
+				role_id,
+			</if>
+			<if test="token != null">
+				token,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				#{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="userAccount != null">
+				#{userAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="userPassword != null">
+				#{userPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="userNickname != null">
+				#{userNickname,jdbcType=VARCHAR},
+			</if>
+			<if test="mobilePhone != null">
+				#{mobilePhone,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				#{sex,jdbcType=VARCHAR},
+			</if>
+			<if test="userStatus != null">
+				#{userStatus,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="roleId != null">
+				#{roleId,jdbcType=VARCHAR},
+			</if>
+			<if test="token != null">
+				#{token,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		sys_user
+		where user_id = #{userId,jdbcType=VARCHAR}
+	</delete>
+
+	<update id="updateByPrimaryKeySelective"
+		parameterType="pers.myAuthweb.model.User">
+		update sys_user
+		<set>
+			<if test="userAccount != null">
+				user_account = #{userAccount,jdbcType=VARCHAR},
+			</if>
+			<if test="userPassword != null">
+				user_password = #{userPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="userNickname != null">
+				user_nickname = #{userNickname,jdbcType=VARCHAR},
+			</if>
+			<if test="mobilePhone != null">
+				mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				sex = #{sex,jdbcType=VARCHAR},
+			</if>
+			<if test="userStatus != null">
+				user_status = #{userStatus,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="roleId != null">
+				role_id = #{roleId,jdbcType=VARCHAR},
+			</if>
+			<if test="token != null">
+				token = #{token,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where user_id = #{userId,jdbcType=VARCHAR}
+	</update>
+
+</mapper>

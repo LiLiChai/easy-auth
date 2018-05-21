@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pers.myAuthweb.dao.PermissionMapper" >
+  <resultMap id="BaseResultMap" type="pers.myAuthweb.model.Permission" >
+    <id column="permission_id" property="permissionId" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+    <result column="permission_name" property="permissionName" jdbcType="VARCHAR" />
+    <result column="permission_value" property="permissionValue" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="permission_icon" property="permissionIcon" jdbcType="VARCHAR" />
+    <result column="order_number" property="orderNumber" jdbcType="INTEGER" />
+    <result column="permission_type" property="permissionType" jdbcType="INTEGER" />
+    <!-- 关联属性 -->
+    <result column="parentName" property="parentName" jdbcType="VARCHAR" />
+  </resultMap>
+	<!-- 根据用户id查询权限 -->
+	<select id="selectPermissionByUserId" resultMap="BaseResultMap" parameterType="string">
+	SELECT a.* FROM sys_permission a,sys_role_permission b,sys_user c WHERE a.permission_id=b.permission_id AND b.role_id=c.role_id AND c.user_id=#{userId} AND a.is_delete=0 AND a.permission_type=0 ORDER BY order_number
+	</select>
+	<!-- 根据角色id查询权限 -->
+	<select id="selectPermissionByRoleId" resultMap="BaseResultMap" parameterType="string">
+	SELECT a.* FROM sys_permission a,sys_role_permission b WHERE a.permission_id=b.permission_id AND b.role_id=#{roleId} ORDER BY order_number
+	</select>
+</mapper>
