@@ -544,7 +544,8 @@ public abstract class JcaCipherService implements CipherService {
 
         javax.crypto.Cipher cipher = initNewCipher(cryptMode, keyBytes, iv, true);
 
-        CipherInputStream cis = new CipherInputStream(in, cipher);
+        @SuppressWarnings("resource")
+		CipherInputStream cis = new CipherInputStream(in, cipher);
 
         int bufSize = getStreamingBufferSize();
         byte[] buffer = new byte[bufSize];
