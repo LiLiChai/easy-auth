@@ -23,4 +23,11 @@
 	<select id="selectPermissionByRoleId" resultMap="BaseResultMap" parameterType="string">
 	SELECT a.* FROM sys_permission a,sys_role_permission b WHERE a.permission_id=b.permission_id AND b.role_id=#{roleId} ORDER BY order_number
 	</select>
+	
+	<select id="selectPermissions" resultMap="BaseResultMap">
+	SELECT a.*,b.permission_name parentName FROM sys_permission a 
+	LEFT JOIN sys_permission b ON a.parent_id=b.permission_id 
+	<if test="searchKey!=null and searchKey!='' and searchValue!=null and searchValue!=''">WHERE ${searchKey} like '%${searchValue}%' </if>
+	ORDER BY a.order_number ASC
+	</select>
 </mapper>

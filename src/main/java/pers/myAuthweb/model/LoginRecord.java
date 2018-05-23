@@ -19,9 +19,9 @@ public class LoginRecord {
 
 	private Date createTime;
 
-	private String userNickName; // 用户名
+	private String userNickName; // 用户名  关联属性
 
-	private String userAccount; // 用户账号
+	private String userAccount; // 用户账号  关联属性
 
 	public String getId() {
 		return id;

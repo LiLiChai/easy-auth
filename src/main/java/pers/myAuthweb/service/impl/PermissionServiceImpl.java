@@ -6,6 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+
 import pers.myAuthweb.common.PageResult;
 import pers.myAuthweb.dao.PermissionMapper;
 import pers.myAuthweb.model.Permission;
@@ -45,8 +48,12 @@ public class PermissionServiceImpl implements PermissionService {
 
 	@Override
 	public PageResult<Permission> getPermissions(Integer page, Integer limit, String searchKey, String searchValue) {
-		// TODO Auto-generated method stub
-		return null;
+		PageResult<Permission> results = new PageResult<Permission>();
+		Page<Object> startPage = PageHelper.startPage(page, limit);
+		List<Permission> permissions = permissionMapper.selectPermissions(searchKey, searchValue);
+		results.setData(permissions);
+		results.setCount(startPage.getTotal());
+		return results;
 	}
 
 	@Override
