@@ -5,7 +5,6 @@ package pers.myAuthweb.utils;
  */
 public class StringUtil {
 	
-	//check is Empty
 	public static boolean isBlank(String str){
 		if(str == null || str.isEmpty() || str.replaceAll(" ", "").isEmpty()){
 			return true;
@@ -21,16 +20,4 @@ public class StringUtil {
 		}
 		return false;
 	}
-	
-	/**
-	 * 首字母大写
-	 * @param in
-	 * @return
-	 */
-	public static String upperHeadChar(String in){  
-	    String head=in.substring(0,1);  
-	    String out=head.toUpperCase()+in.substring(1,in.length());  
-	    return out;  
-	}
-	
 }

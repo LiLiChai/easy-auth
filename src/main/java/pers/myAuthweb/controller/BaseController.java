@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 public class BaseController {
 	
 	public String getUserId(HttpServletRequest request) {
-		
 		return (String) request.getAttribute("userId");
 	}
 	

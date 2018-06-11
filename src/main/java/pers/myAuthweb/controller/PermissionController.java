@@ -17,7 +17,6 @@ import pers.myAuthweb.common.authz.annotation.RequiresPermissions;
 import pers.myAuthweb.common.authz.annotation.RequiresRoles;
 import pers.myAuthweb.exception.BusinessException;
 import pers.myAuthweb.model.Permission;
-import pers.myAuthweb.service.AuthService;
 import pers.myAuthweb.service.PermissionService;
 
 /*

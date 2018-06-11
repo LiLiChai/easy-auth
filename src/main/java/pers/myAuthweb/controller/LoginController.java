@@ -23,7 +23,7 @@ import pers.myAuthweb.service.LoginRecordService;
 import pers.myAuthweb.service.PermissionService;
 import pers.myAuthweb.service.UserService;
 import pers.myAuthweb.utils.DateUtil;
-import pers.myAuthweb.utils.StringUtils;
+import pers.myAuthweb.utils.StringUtil;
 import pers.myAuthweb.utils.UserAgentGetter;
 
 /*
@@ -45,7 +45,7 @@ public class LoginController extends BaseController {
 	public ResultEntity login(String userName, String password, String captchaValue, String captchaKey,
 			HttpServletRequest request) {
 		logger.debug("account=" + userName);
-		if (!StringUtils.isEmpty(userName, password, captchaValue, captchaKey))
+		if (!StringUtil.isBlank(userName, password, captchaValue, captchaKey))
 			return ResultEntity.error("input is exist empty!!! please check!!");
 		if (!CaptchaUtil.checkCaptcha(captchaKey, captchaValue, request))
 			return ResultEntity.error("Captcha is error!!!");
@@ -58,6 +58,7 @@ public class LoginController extends BaseController {
 			return ResultEntity.error("The user is locked!!!");
 
 		String encryptPsw = EncryptUtils.encrytMd5(password, user.getUserId(), 3);
+		logger.debug(encryptPsw);
 		if (!user.getUserPassword().equals(encryptPsw))
 			return ResultEntity.error("user or password is incorrect!!");
 
