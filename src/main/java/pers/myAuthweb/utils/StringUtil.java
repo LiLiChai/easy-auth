@@ -15,9 +15,9 @@ public class StringUtil {
 	public static boolean isBlank(String... strs){
 		for(int i=0; i<strs.length; i++){
 			if(isBlank(strs[i])){
-				return true;
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 }
