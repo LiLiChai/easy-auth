@@ -29,15 +29,12 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public User getUserByUserName(String userName) {
-		User user = userMapper.selectUserByUserName(userName);
-		System.out.println(user);
 		return userMapper.selectUserByUserName(userName);
 	}
 
 	@Override
 	public User getUserById(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return userMapper.selectUserByUserId(userId);
 	}
 
 	@Override

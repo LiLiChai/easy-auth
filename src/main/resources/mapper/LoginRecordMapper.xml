@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="pers.lihuan.authweb.dao.LoginRecordMapper" >
+  
   <resultMap id="BaseResultMap" type="pers.lihuan.authweb.model.LoginRecord" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="user_id" property="userId" jdbcType="VARCHAR" />
@@ -15,6 +16,7 @@
   </resultMap>
 
   <!-- 查询登录日志 -->
+  <!-- &gt; 大于  &lg; 小于  &amp; 和&    &apos; 单引号   &quot; 双引号 -->
   <select id="selectLoginRecords" resultMap="BaseResultMap" parameterType="string">
   SELECT a.*,b.user_nickname,b.user_account FROM sys_login_record a,sys_user b WHERE a.user_id=b.user_id 
   <if test="startDate != null">

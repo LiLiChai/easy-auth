@@ -15,17 +15,18 @@ import pers.lihuan.authweb.common.captcha.GifCaptcha;
  * author : LH 2018-05-19 AM
  */
 public class CaptchaServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = -90304944339413093L;
 
 	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
+	public void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		//获取codeKey
         String codeKey = request.getParameter("codeKey");
         if(codeKey==null||codeKey.trim().isEmpty()){
         	return;
         }
-        
         //设置输出图片
         response.setContentType("image/gif");
         response.setHeader("Pragma", "No-cache");  
@@ -41,11 +42,4 @@ public class CaptchaServlet extends HttpServlet {
         //输入图片
         captcha.out(response.getOutputStream());
 	}
-
-	@Override
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
-	}
-	
 }

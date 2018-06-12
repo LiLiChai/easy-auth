@@ -51,9 +51,9 @@ public class UserController extends BaseController {
 	public ResultEntity addUser(User user) throws BusinessException {
 		user.setUserPassword("316412316");
 		if (userService.addUser(user))
-			return ResultEntity.ok("ADD USER SUCCESSFULLY!!!");
+			return ResultEntity.ok("添加用户成功!!!");
 		else
-			return ResultEntity.error("ERROR! PLEASE TRY AGAIN!!!");
+			return ResultEntity.error("添加用户失败!!!");
 	}
 	
 	@RequiresRoles("admin")
@@ -61,9 +61,9 @@ public class UserController extends BaseController {
 	public ResultEntity deleteUser(@PathVariable("userId") String userId) throws BusinessException {
 		if(userService.deleteUser(userId)){
 			AuthUtil.getInstance().expireToken(userId);
-			return ResultEntity.ok("DELETE SUCCESSFULLY!!!");
+			return ResultEntity.ok("删除成功!!!");
 		}else{
-			return ResultEntity.error("DELETE UNSUCCESSFULLY!!!");
+			return ResultEntity.error("删除失败!!!");
 		}
 	}
 	

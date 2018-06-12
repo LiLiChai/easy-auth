@@ -42,9 +42,9 @@ public class RoleController {
 	@PostMapping()
 	public ResultEntity addRole(Role role) {
 		if (roleService.addRole(role)) {
-			return ResultEntity.ok("ADD ROLE SUCCESSFULLY!!");
+			return ResultEntity.ok("添加角色成功！!!");
 		} else {
-			return ResultEntity.error("ADD ROLE UNSUCCESSFULLY!!！");
+			return ResultEntity.error("添加角色失败!!！");
 		}
 	}
 	
@@ -52,9 +52,9 @@ public class RoleController {
 	@DeleteMapping("/{id}")
 	public ResultEntity deleteRole(@PathVariable("id") String roleId) {
 		if (roleService.deleteRole(roleId)) {
-			return ResultEntity.ok("DELETE ROLE SUCCESSFULLY!!");
+			return ResultEntity.ok("删除角色成功!!");
 		} else {
-			return ResultEntity.error("DELETE ROLE UNSUCCESSFULLY!!！");
+			return ResultEntity.error("删除角色失败!!！");
 		}
 	}
 	
@@ -62,21 +62,17 @@ public class RoleController {
 	@PutMapping()
 	public ResultEntity updateRole(Role role) {
 		if (roleService.updateRole(role))
-			return ResultEntity.ok("UPDATE ROLE SUCCESSFULLY!!!");
+			return ResultEntity.ok("更新角色成功!!!");
 		else
-			return ResultEntity.error("UPDATE ROLE UNSUCCESSFULLY!!!");
+			return ResultEntity.error("更新角色失败!!!");
 	}
 	
 	@RequiresPermissions("system/role")
 	@PutMapping("/status")
 	public ResultEntity updateStatus(String roleId, int status) {
 		if (roleService.updateStatus(roleId, status))
-			return ResultEntity.ok("UPDATE ROLE STATUS SUCCESSFULLY!!!");
+			return ResultEntity.ok("更新角色状态成功!!!");
 		else
-			return ResultEntity.error("UPDATE ROLE STATUS UNSUCCESSFULLY!!!");
-	}
-	
-	public void updatePermission() {
-		
+			return ResultEntity.error("更新角色状态失败!!!");
 	}
 }

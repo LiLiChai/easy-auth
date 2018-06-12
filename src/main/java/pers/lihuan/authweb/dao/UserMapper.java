@@ -11,6 +11,8 @@ import pers.lihuan.authweb.model.User;
 public interface UserMapper {
 
 	User selectUserByUserName(String userName);
+	
+	User selectUserByUserId(String userId);
 
 	List<User> selectUsers(@Param("status") Integer status, @Param("searchKey") String searchKey,
 			@Param("searchValue") String searchValue);

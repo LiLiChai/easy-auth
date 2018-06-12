@@ -1,6 +1,7 @@
 package pers.lihuan.authweb.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -56,9 +57,9 @@ public class PermissionController {
 	@DeleteMapping("/{permissionId}")
 	public ResultEntity deletePermissions(@PathVariable("permissionId") String permissionId) throws BusinessException{
 		if (permissionService.deletePermission(permissionId))
-			return ResultEntity.ok("DELETE PERMISSION SUCCESSFULLY!!!");
+			return ResultEntity.ok("删除权限成功!!!");
 		else
-			return ResultEntity.error("DELETE PERMISSION UNSUCCESSFULLY!!!");
+			return ResultEntity.error("删除权限失败!!!");
 	}
 	
 	
@@ -66,25 +67,33 @@ public class PermissionController {
 	@PutMapping("status")
 	public ResultEntity updateStatus(String permissionId, int status) {
 		if (permissionService.updateStatus(permissionId, status))
-			return ResultEntity.ok("UPDATE PERMISSION STATUS SUCCESSFULLY!!!");
+			return ResultEntity.ok("权限状态更新成功!!!");
 		else
-			return ResultEntity.error("UPDATE PERMISSION STATUS UNSUCCESSFULLY!!!");
+			return ResultEntity.error("权限状态更新失败!!!");
 	}
 	
 	public ResultEntity updatePermission(Permission permission) {
 		if (permissionService.updatePermission(permission))
-			return ResultEntity.ok("UPDATE PERMISSION IS SUCCESSFULLY!!!");
+			return ResultEntity.ok("权限更新成功!!!");
 		else
-			return ResultEntity.error("UPDATE PERMISSION IS UNSUCCESSFULLY!!!");
+			return ResultEntity.error("权限更新失败!!!");
 	}
 	
 	@RequiresRoles("admin")
 	@PutMapping("/tree")
 	public ResultEntity updateRolePermission(String roleId, String permissionIds) {
 		if (permissionService.updateRolePermission(roleId, permissionIds))
-			return ResultEntity.ok("UPDATE ROLE PERMISSION SUCCESSFULLY!!!");
+			return ResultEntity.ok("更新角色权限成功!!!");
 		else
-			return ResultEntity.error("UPDATE ROLE PERMISSION UNSUCCESSFULLY!!!");
+			return ResultEntity.error("更新角色权限失败!!!");
 	}
+	
+	/**
+	 * 查询所有的父菜单
+	 */
+//	@GetMapping("/parent/{type}")
+//	public List<Permission> listParent(@PathVariable("type") int type){
+//		//return permissionService.getParentPermissions(type);
+//	}
 	
 }

@@ -31,6 +31,12 @@
 		a.*,b.role_name FROM sys_user a LEFT JOIN sys_role b ON
 		a.role_id=b.role_id WHERE a.user_account=#{userAccount}
 	</select>
+	<select id="selectUserByUserId" resultMap="BaseResultMap">
+		SELECT
+		a.*,b.role_name FROM sys_user a LEFT JOIN sys_role b ON
+		a.role_id=b.role_id WHERE a.user_id=#{userId}
+	</select>
+	
 	<!-- query all users -->
 	<select id="selectUsers" resultMap="BaseResultMap">
 		SELECT a.*,b.role_name FROM sys_user a,sys_role b WHERE a.role_id =

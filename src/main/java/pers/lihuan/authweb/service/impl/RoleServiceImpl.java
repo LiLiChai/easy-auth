@@ -1,5 +1,7 @@
 package pers.lihuan.authweb.service.impl;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,7 @@ import pers.lihuan.authweb.dao.RoleMapper;
 import pers.lihuan.authweb.model.Role;
 import pers.lihuan.authweb.model.RoleExample;
 import pers.lihuan.authweb.service.RoleService;
+import pers.lihuan.authweb.utils.UUIDUtil;
 
 /*
  * author : LH 2018-05-20 PM
@@ -48,8 +51,9 @@ public class RoleServiceImpl implements RoleService {
 
 	@Override
 	public boolean addRole(Role role) {
-		// TODO Auto-generated method stub
-		return false;
+		role.setRoleId(UUIDUtil.randomUUID8());
+		role.setCreateTime(new Date());
+		return roleMapper.insertRole(role)>0;
 	}
 
 	@Override

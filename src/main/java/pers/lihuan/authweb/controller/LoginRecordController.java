@@ -37,6 +37,4 @@ public class LoginRecordController {
 		}
 		return recordService.getLoginRecords(page, limit, startDate, endDate, account);
 	}
-	
-	
 }
