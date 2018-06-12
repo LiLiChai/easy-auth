@@ -9,8 +9,8 @@
            http://www.springframework.org/schema/aop 
            http://www.springframework.org/schema/aop/spring-aop.xsd ">
 	<!-- 扫描service -->
-	<context:component-scan base-package="pers.myAuthweb.service.impl" />
-	<context:component-scan base-package="pers.myAuthweb.auth" />
+	<context:component-scan base-package="pers.lihuan.authweb.service.impl" />
+	<context:component-scan base-package="pers.lihuan.authweb.auth" />
 	
 	
 	<import resource="spring-mybatis.xml" />

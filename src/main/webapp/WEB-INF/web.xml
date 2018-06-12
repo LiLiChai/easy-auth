@@ -57,7 +57,7 @@
 	<!-- 图形验证码 -->
 	<servlet>
 		<servlet-name>CaptchaServlet</servlet-name>
-		<servlet-class>pers.myAuthweb.common.captcha.servlet.CaptchaServlet</servlet-class>
+		<servlet-class>pers.lihuan.authweb.common.captcha.servlet.CaptchaServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>CaptchaServlet</servlet-name>

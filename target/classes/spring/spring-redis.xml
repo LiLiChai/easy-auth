@@ -27,7 +27,7 @@
 	</bean>
 
 	<!-- 这里可以配置多个redis -->
-	<bean id="redisUtil" class="pers.myAuthweb.utils.RedisUtil">
+	<bean id="redisUtil" class="pers.lihuan.authweb.utils.RedisUtil">
 		<property name="redisTemplate" ref="redisTemplate" />
 	</bean>
 </beans>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pers.myAuthweb.dao.RoleMapper">
+<mapper namespace="pers.lihuan.authweb.dao.RoleMapper">
 	<resultMap id="BaseResultMap"
-		type="pers.myAuthweb.model.Role">
+		type="pers.lihuan.authweb.model.Role">
 		<id column="role_id" property="roleId" jdbcType="VARCHAR" />
 		<result column="role_name" property="roleName"
 			jdbcType="VARCHAR" />
@@ -83,7 +83,7 @@
 		role_id, role_name, comments, create_time, update_time, is_delete
 	</sql>
 	<select id="selectByExample" resultMap="BaseResultMap"
-		parameterType="pers.myAuthweb.model.RoleExample">
+		parameterType="pers.lihuan.authweb.model.RoleExample">
 		select
 		<if test="distinct">
 			distinct
