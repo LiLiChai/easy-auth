@@ -26,4 +26,6 @@ public interface PermissionService {
 	boolean updateStatus(String permissionId, int status);
 	
 	boolean updateRolePermission(String roleId, String permissionIds);
+	
+	List<Permission> getParentPermissions(int type);
 }

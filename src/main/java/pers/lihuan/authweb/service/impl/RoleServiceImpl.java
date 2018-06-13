@@ -10,6 +10,8 @@ import com.github.pagehelper.PageHelper;
 
 import pers.lihuan.authweb.common.PageResult;
 import pers.lihuan.authweb.dao.RoleMapper;
+import pers.lihuan.authweb.exception.BusinessException;
+import pers.lihuan.authweb.exception.ParameterException;
 import pers.lihuan.authweb.model.Role;
 import pers.lihuan.authweb.model.RoleExample;
 import pers.lihuan.authweb.service.RoleService;
@@ -57,21 +59,29 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public boolean deleteRole(String roleId) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteRole(String roleId) throws BusinessException {
+		try {
+			return roleMapper.deleteByPrimaryKey(roleId) > 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new BusinessException("角色已被关联");
+		}
 	}
 
 	@Override
 	public boolean updateRole(Role role) {
-		// TODO Auto-generated method stub
-		return false;
+		return roleMapper.updateByPrimaryKeySelective(role) > 0;
 	}
 
 	@Override
-	public boolean updateStatus(String roleId, int status) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean updateStatus(String roleId, int isDelete) throws ParameterException {
+		if(isDelete != 0 && isDelete != 1){
+			throw new ParameterException();
+		}
+		Role role = new Role();
+		role.setRoleId(roleId);
+		role.setIsDelete(isDelete);
+		return roleMapper.updateByPrimaryKeySelective(role) > 0;
 	}
 
 }

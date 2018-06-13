@@ -17,7 +17,9 @@ import pers.lihuan.authweb.common.ResultEntity;
 import pers.lihuan.authweb.common.authz.annotation.RequiresPermissions;
 import pers.lihuan.authweb.common.authz.annotation.RequiresRoles;
 import pers.lihuan.authweb.exception.BusinessException;
+import pers.lihuan.authweb.model.MenuTree;
 import pers.lihuan.authweb.model.Permission;
+import pers.lihuan.authweb.service.AuthService;
 import pers.lihuan.authweb.service.PermissionService;
 
 /*
@@ -29,9 +31,27 @@ public class PermissionController {
 	
 	@Autowired
 	PermissionService permissionService;
-//	@Autowired
-//	AuthService authService;
+	@Autowired
+	AuthService authService;
 	
+	/**
+	 * 角色权限菜单树
+	 */
+	@GetMapping("/tree/{roleId}")
+	public List<MenuTree> listPermTree(@PathVariable("roleId") String roleId){
+		return authService.getPermissionTree(roleId);
+	}
+	
+	/**
+	 * 查询所有的父菜单
+	 */
+	@GetMapping("/parent/{type}")
+	public List<Permission> listParent(@PathVariable("type") int type){
+		return permissionService.getParentPermissions(type);
+	}
+	/*
+	 * 查询权限
+	 */
 	@GetMapping()
 	public PageResult<Permission> getPermissions(Integer page, Integer limit, String searchKey, String searchValue) throws UnsupportedEncodingException{
 		if(searchValue != null){
@@ -44,16 +64,22 @@ public class PermissionController {
 		return permissionService.getPermissions(page, limit, searchKey, searchValue);
 	}
 	
+	/*
+	 * 添加权限
+	 */
 	@RequiresRoles("admin")
 	@PostMapping()
 	public ResultEntity addPermissions(Permission permission) {
 		if (permissionService.addPermission(permission))
-			return ResultEntity.ok("ADD PERMISSION SUCCESSFULLY!!!");
+			return ResultEntity.ok("添加权限成功!!!");
 		else
-			return ResultEntity.error("ADD PERMISSION UNSUCCESSFULLY!!!");
+			return ResultEntity.error("添加权限失败!!!");
 	}
 
-	@RequiresPermissions("role/permission")
+	/*
+	 * 删除权限
+	 */
+	@RequiresPermissions("system/permission")
 	@DeleteMapping("/{permissionId}")
 	public ResultEntity deletePermissions(@PathVariable("permissionId") String permissionId) throws BusinessException{
 		if (permissionService.deletePermission(permissionId))
@@ -62,7 +88,20 @@ public class PermissionController {
 			return ResultEntity.error("删除权限失败!!!");
 	}
 	
-	
+	/*
+	 * 更新权限
+	 */
+	@RequiresRoles("admin")
+	@PutMapping()
+	public ResultEntity updatePermission(Permission permission) {
+		if (permissionService.updatePermission(permission))
+			return ResultEntity.ok("权限更新成功!!!");
+		else
+			return ResultEntity.error("权限更新失败!!!");
+	}
+	/*
+	 * 更新权限状态
+	 */
 	@RequiresRoles("admin")
 	@PutMapping("status")
 	public ResultEntity updateStatus(String permissionId, int status) {
@@ -72,13 +111,10 @@ public class PermissionController {
 			return ResultEntity.error("权限状态更新失败!!!");
 	}
 	
-	public ResultEntity updatePermission(Permission permission) {
-		if (permissionService.updatePermission(permission))
-			return ResultEntity.ok("权限更新成功!!!");
-		else
-			return ResultEntity.error("权限更新失败!!!");
-	}
 	
+	/*
+	 * 更新角色所拥有的权限
+	 */
 	@RequiresRoles("admin")
 	@PutMapping("/tree")
 	public ResultEntity updateRolePermission(String roleId, String permissionIds) {
@@ -88,12 +124,6 @@ public class PermissionController {
 			return ResultEntity.error("更新角色权限失败!!!");
 	}
 	
-	/**
-	 * 查询所有的父菜单
-	 */
-//	@GetMapping("/parent/{type}")
-//	public List<Permission> listParent(@PathVariable("type") int type){
-//		//return permissionService.getParentPermissions(type);
-//	}
+	
 	
 }

@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import pers.lihuan.authweb.common.PageResult;
 import pers.lihuan.authweb.common.ResultEntity;
 import pers.lihuan.authweb.common.authz.annotation.RequiresPermissions;
+import pers.lihuan.authweb.exception.BusinessException;
+import pers.lihuan.authweb.exception.ParameterException;
 import pers.lihuan.authweb.model.Role;
 import pers.lihuan.authweb.service.RoleService;
 /*
@@ -50,7 +52,7 @@ public class RoleController {
 	
 	@RequiresPermissions("system/role")
 	@DeleteMapping("/{id}")
-	public ResultEntity deleteRole(@PathVariable("id") String roleId) {
+	public ResultEntity deleteRole(@PathVariable("id") String roleId) throws BusinessException {
 		if (roleService.deleteRole(roleId)) {
 			return ResultEntity.ok("删除角色成功!!");
 		} else {
@@ -69,7 +71,7 @@ public class RoleController {
 	
 	@RequiresPermissions("system/role")
 	@PutMapping("/status")
-	public ResultEntity updateStatus(String roleId, int status) {
+	public ResultEntity updateStatus(String roleId, int status) throws ParameterException {
 		if (roleService.updateStatus(roleId, status))
 			return ResultEntity.ok("更新角色状态成功!!!");
 		else

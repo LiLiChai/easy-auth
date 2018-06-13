@@ -1,6 +1,7 @@
 package pers.lihuan.authweb.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,12 @@ import com.github.pagehelper.PageHelper;
 
 import pers.lihuan.authweb.common.PageResult;
 import pers.lihuan.authweb.dao.PermissionMapper;
+import pers.lihuan.authweb.exception.BusinessException;
 import pers.lihuan.authweb.model.Permission;
+import pers.lihuan.authweb.model.PermissionExample;
 import pers.lihuan.authweb.service.PermissionService;
+import pers.lihuan.authweb.utils.StringUtil;
+import pers.lihuan.authweb.utils.UUIDUtil;
 
 /*
  * author : LH 2018-05-20 PM
@@ -58,32 +63,59 @@ public class PermissionServiceImpl implements PermissionService {
 
 	@Override
 	public boolean addPermission(Permission permission) {
-		// TODO Auto-generated method stub
-		return false;
+		permission.setPermissionId(UUIDUtil.randomUUID8());
+		permission.setCreateTime(new Date());
+		if (StringUtil.isBlank(permission.getParentId())) {
+			permission.setParentId("0");
+		}
+		return permissionMapper.insertSelective(permission) > 0;
 	}
 
 	@Override
-	public boolean deletePermission(String permissionId) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deletePermission(String permissionId) throws BusinessException {
+		try{
+			return permissionMapper.deleteByPrimaryKey(permissionId)>0;
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new BusinessException("权限已被使用");
+		}
 	}
 
 	@Override
 	public boolean updatePermission(Permission permission) {
-		// TODO Auto-generated method stub
-		return false;
+		if (StringUtil.isBlank(permission.getParentId()))
+			permission.setParentId("0");
+		return permissionMapper.updateByPrimaryKeySelective(permission) > 0;
 	}
 
 	@Override
-	public boolean updateStatus(String permissionId, int status) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean updateStatus(String permissionId, int isDelete) {
+		Permission permission = new Permission();
+		permission.setPermissionId(permissionId);
+		permission.setIsDelete(isDelete);
+		return permissionMapper.updateByPrimaryKeySelective(permission) > 0;
 	}
 
 	@Override
 	public boolean updateRolePermission(String roleId, String permissionIds) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	@Override
+	public List<Permission> getParentPermissions(int type) {
+		List<Permission> result;
+		if(type==0){
+			PermissionExample example = new PermissionExample();
+			example.setOrderByClause("order_number asc");
+			PermissionExample.Criteria criteria = example.createCriteria();
+			criteria.andParentIdEqualTo("0");
+			criteria.andPermissionTypeEqualTo(0);
+			result = permissionMapper.selectByExample(example);
+		}else{
+			result = permissionMapper.selectButtonParent();
+		}
+		return result;
 	}
 	
 }

@@ -1,6 +1,8 @@
 package pers.lihuan.authweb.service;
 
 import pers.lihuan.authweb.common.PageResult;
+import pers.lihuan.authweb.exception.BusinessException;
+import pers.lihuan.authweb.exception.ParameterException;
 import pers.lihuan.authweb.model.Role;
 /*
  * author : LH 2018-05-20 PM
@@ -11,10 +13,10 @@ public interface RoleService {
 
 	boolean addRole(Role role);
 	
-	boolean deleteRole(String roleId);
+	boolean deleteRole(String roleId) throws BusinessException;
 	
 	boolean updateRole(Role role);
 	
-	boolean updateStatus(String roleId, int status);
+	boolean updateStatus(String roleId, int status) throws ParameterException;
 	
 }
