@@ -1,7 +1,6 @@
 package pers.lihuan.authweb.controller;
 
 import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -39,7 +38,8 @@ public class LoginController extends BaseController {
 	LoginRecordService loginRecordService;
 	@Autowired
 	PermissionService permissionService;
-	private Logger logger = LoggerFactory.getLogger(LoginController.class);
+	
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
 	@PostMapping("login")
 	public ResultEntity login(String userName, String password, String captchaValue, String captchaKey,
@@ -62,7 +62,6 @@ public class LoginController extends BaseController {
 			return ResultEntity.error("用户名或密码错误！！！");
 
 		addLoginRecord(request, user.getUserId());
-
 		String token = AuthUtil.getInstance().createToken(user.getUserId(), DateUtil.getAppointDate(new Date(), 30));
 		user.setUserPassword(null);
 		logger.debug("======================登录成功！！！=========================");
@@ -72,7 +71,7 @@ public class LoginController extends BaseController {
 	@DeleteMapping("login")
 	public ResultEntity loginOut(HttpServletRequest request) {
 		AuthUtil.getInstance().expireToken(getUserId(request), getToken(request));
-		return ResultEntity.ok("login out successfully！");
+		return ResultEntity.ok("退出登录成功！！！");
 	}
 
 	@GetMapping("/menu")
@@ -80,6 +79,7 @@ public class LoginController extends BaseController {
 		return ResultEntity.ok().put("menus", permissionService.getMenusByUser(getUserId(request)));
 	}
 
+	
 	public void addLoginRecord(HttpServletRequest request, String userId) {
 		UserAgentGetter agentGetter = new UserAgentGetter(request);
 		LoginRecord loginRecord = new LoginRecord();

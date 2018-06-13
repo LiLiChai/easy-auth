@@ -1,5 +1,6 @@
 package pers.lihuan.authweb.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import pers.lihuan.authweb.common.PageResult;
 import pers.lihuan.authweb.dao.LoginRecordMapper;
 import pers.lihuan.authweb.model.LoginRecord;
 import pers.lihuan.authweb.service.LoginRecordService;
+import pers.lihuan.authweb.utils.UUIDUtil;
 /*
  * author : LH 2018-05-20 PM
  */
@@ -24,7 +26,9 @@ public class LoginRecordServiceImpl implements LoginRecordService {
 	
 	@Override
 	public boolean addLoginRecord(LoginRecord loginRecord) {
-		return false;
+		loginRecord.setId(UUIDUtil.randomUUID8());
+		loginRecord.setCreateTime(new Date());
+		return loginRecordMapper.insert(loginRecord) > 0;
 	}
 
 	@Override

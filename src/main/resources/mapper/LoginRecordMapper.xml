@@ -30,4 +30,9 @@
   </if>
   ORDER BY a.create_time DESC
   </select>
+  
+  <insert id="insert" parameterType="pers.lihuan.authweb.model.LoginRecord">
+  	INSERT INTO sys_login_record(id,user_id,os_name,device,browser_type,ip_address,create_time)
+  	VALUES(#{id},#{userId},#{osName},#{device},#{browserType},#{ipAddress},#{createTime})
+  </insert>
 </mapper>

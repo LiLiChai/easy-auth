@@ -28,16 +28,20 @@ public class AuthServiceImpl implements AuthService {
 	
 	@Override
 	public List<MenuTree> getPermissionTree(String roleId){
+		
 		List<MenuTree> listMenuTree = new ArrayList<MenuTree>();
+		
 		PermissionExample permissionExample = new PermissionExample();
 		permissionExample.setOrderByClause("order_number ASC");
 		PermissionExample.Criteria permissionCriteria = permissionExample.createCriteria();
 		permissionCriteria.andIsDeleteEqualTo(0);
 		List<Permission> allPermissions = permissionMapper.selectByExample(permissionExample);
+		
 		RolePermissionExample rolePermissionExample = new RolePermissionExample();
 		RolePermissionExample.Criteria rolePermissionCriteria = rolePermissionExample.createCriteria();
 		rolePermissionCriteria.andRoleIdEqualTo(roleId);
 		List<RolePermission> rolePermissions = rolePermissionMapper.selectByExample(rolePermissionExample);
+		
 		for(Permission one : allPermissions){
 			MenuTree menuTree = new MenuTree();
 			menuTree.setId(one.getPermissionId());

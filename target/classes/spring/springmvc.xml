@@ -14,6 +14,7 @@
 
 	<!-- 使用注解驱动器代替注解映射器和注解适配器配置 -->
 	<mvc:annotation-driven />
+	<!-- 将静态资源和dispatcher请求分开 -->
 	<mvc:default-servlet-handler />
 	<!-- 扫描controller,指定controller的包 -->
 	<context:component-scan base-package="pers.lihuan.authweb.controller" />

@@ -29,7 +29,7 @@
 	</resultMap>
 	
 	
-	<sql id="Example_Where_Clause" >
+  <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
         <if test="criteria.valid" >
@@ -207,9 +207,6 @@
 		</trim>
 	</insert>
 	
-	
-	
-	
 	<update id="updateByPrimaryKeySelective" parameterType="pers.lihuan.authweb.model.Permission" >
     update sys_permission
     <set >
@@ -243,7 +240,6 @@
     </set>
     where permission_id = #{permissionId,jdbcType=VARCHAR}
   </update>
-  
   
    <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from sys_permission

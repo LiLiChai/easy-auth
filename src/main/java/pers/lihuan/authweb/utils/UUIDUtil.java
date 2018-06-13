@@ -3,17 +3,10 @@ package pers.lihuan.authweb.utils;
 import java.util.UUID;
 
 /**
- * 短8位UUID思想其实借鉴微博短域名的生成方式，但是其重复概率过高，而且每次生成4个，需要随即选取一个。
- * 
- * 本算法利用62个可打印字符，通过随机生成32位UUID，由于UUID都为十六进制，所以将UUID分成8组，每4个为一组，然后通过模62操作，
- * 结果作为索引取出字符， 这样重复率大大降低。
- * 
- * 经测试，在生成一千万个数据也没有出现重复，完全满足大部分需求。
- * 
- * @author wangfan
- * @date 2017-3-28 下午1:11:31
+ *通过UUID生成唯一ID
  */
 public class UUIDUtil {
+	
 	private static String[] chars = new String[] { "a", "b", "c", "d", "e", "f",
 			"g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
 			"t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5",
@@ -23,8 +16,6 @@ public class UUIDUtil {
 
 	/**
 	 * 生成8位uuid
-	 * @return
-	 * @author wangfan
 	 */
 	public static String randomUUID8() {
 		StringBuffer shortBuffer = new StringBuffer();
@@ -39,12 +30,9 @@ public class UUIDUtil {
 	
 	/**
 	 * 生成32位uuid
-	 * @return
-	 * @author wangfan
 	 */
 	public static String randomUUID32(){
-		String uuid = UUID.randomUUID().toString().replace("-", "");
-		return uuid;
+		return UUID.randomUUID().toString().replace("-", "");
 	}
 
 }

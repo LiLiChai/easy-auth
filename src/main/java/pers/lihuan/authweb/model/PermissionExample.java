@@ -5,7 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 public class PermissionExample {
-    protected String orderByClause;
+   
+	protected String orderByClause;
 
     protected boolean distinct;
 

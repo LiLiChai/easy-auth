@@ -33,13 +33,13 @@ public class PermissionServiceImpl implements PermissionService {
 		List<Permission> permissions = permissionMapper.selectPermissionByUserId(userId);
 		for(Permission one1 : permissions) {
 			if("0".equals(one1.getParentId())){
-				List<Permission> subMenu = new ArrayList<Permission>();
+				List<Permission> submenu = new ArrayList<Permission>();
 				for(Permission one2 : permissions) {
 					if(one1.getPermissionId().equals(one2.getParentId())) {
-						subMenu.add(one2);
+						submenu.add(one2);
 					}
 				}
-				one1.setSubMenus(subMenu);
+				one1.setSubMenus(submenu);
 				results.add(one1);
 			}
 		}

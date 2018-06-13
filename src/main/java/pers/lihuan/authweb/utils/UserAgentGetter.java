@@ -7,6 +7,7 @@ import eu.bitwalker.useragentutils.UserAgent;
  * author : LH 2018-05-18 PM
  */
 public class UserAgentGetter {
+	
 	private UserAgent userAgent;
 	private String userAgentString;
 	private HttpServletRequest request;

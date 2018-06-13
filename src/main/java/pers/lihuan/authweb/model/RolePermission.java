@@ -6,6 +6,7 @@ import java.io.Serializable;
  * 角色权限
  */
 public class RolePermission implements Serializable {
+	
 	private static final long serialVersionUID = 1848074014446805333L;
 
 	private String id;

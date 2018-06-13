@@ -13,4 +13,5 @@ public interface LoginRecordMapper {
 	
 	public List<LoginRecord> selectLoginRecords(@Param("startDate") String startDate, @Param("endDate") String endDate,
 			@Param("searchAccount") String searchAccount);
+	int insert(LoginRecord loginRecord);
 }
