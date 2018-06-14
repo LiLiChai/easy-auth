@@ -21,6 +21,7 @@ import pers.lihuan.authweb.utils.UUIDUtil;
 
 /*
  * author : LH 2018-05-20 PM
+ * 权限管理
  */
 @Service
 public class PermissionServiceImpl implements PermissionService {
@@ -98,7 +99,6 @@ public class PermissionServiceImpl implements PermissionService {
 
 	@Override
 	public boolean updateRolePermission(String roleId, String permissionIds) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	

@@ -16,6 +16,7 @@ import pers.lihuan.authweb.service.LoginRecordService;
 import pers.lihuan.authweb.utils.UUIDUtil;
 /*
  * author : LH 2018-05-20 PM
+ * 管理用户登录记录
  */
 @Service
 public class LoginRecordServiceImpl implements LoginRecordService {

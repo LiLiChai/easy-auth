@@ -17,7 +17,8 @@ import pers.lihuan.authweb.service.AuthService;
 import pers.lihuan.authweb.utils.UUIDUtil;
 
 /**
- * 权限
+ * author : lh 2018-06-14 AM
+ * 管理角色权限
  */
 @Service(value="authService")
 public class AuthServiceImpl implements AuthService {
@@ -66,7 +67,7 @@ public class AuthServiceImpl implements AuthService {
 		RolePermissionExample.Criteria criteria = example.createCriteria();
 		criteria.andRoleIdEqualTo(roleId);
 		rolePermissionMapper.deleteByExample(example);
-		if(authIds!=null&&authIds.size()>0){
+		if(authIds != null && authIds.size()>0){
 			for(String authId : authIds){
 				RolePermission record = new RolePermission();
 				record.setId(UUIDUtil.randomUUID8());

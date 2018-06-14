@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="pers.lihuan.authweb.dao.UserMapper">
+	
 	<resultMap id="BaseResultMap"
 		type="pers.lihuan.authweb.model.User">
 		<id column="user_id" property="userId" jdbcType="VARCHAR" />
@@ -25,52 +26,67 @@
 		<result column="role_name" property="roleName"
 			jdbcType="VARCHAR" />
 	</resultMap>
-	<!-- query user by userName -->
+	
+	<!-- 通过用户名查询 -->
 	<select id="selectUserByUserName" resultMap="BaseResultMap">
 		SELECT
 		a.*,b.role_name FROM sys_user a LEFT JOIN sys_role b ON
 		a.role_id=b.role_id WHERE a.user_account=#{userAccount}
 	</select>
+	
 	<select id="selectUserByUserId" resultMap="BaseResultMap">
 		SELECT
 		a.*,b.role_name FROM sys_user a LEFT JOIN sys_role b ON
 		a.role_id=b.role_id WHERE a.user_id=#{userId}
 	</select>
 	
-	<!-- query all users -->
+	<!-- 根据分页条件查询用户 -->
 	<select id="selectUsers" resultMap="BaseResultMap">
 		SELECT a.*,b.role_name FROM sys_user a,sys_role b WHERE a.role_id =
 		b.role_id
 		<if test="status!=null">AND a.user_status=#{status} </if>
 		<if
-			test="searchKey!=null and searchKey!='' and searchValue!=null and searchValue!=''">AND a.${searchKey} like '%${searchValue}%' </if>
+			test="searchKey!=null and searchKey!='' and searchValue!=null and searchValue!=''">
+			AND a.${searchKey} like '%${searchValue}%' </if>
 		ORDER BY a.create_time ASC
 	</select>
 
-	<!-- insert a user -->
+	<!-- 插入一个用户   未对NULL作处理-->
 	<insert id="insertUser"
 		parameterType="pers.lihuan.authweb.model.User">
-		insert into sys_user (user_id, user_account,
+		INSERT INTO 
+		sys_user (user_id, 
+		user_account,
 		user_password,
-		user_nickname, mobile_phone, sex,
+		user_nickname, 
+		mobile_phone, 
+		sex,
 		user_status,
-		create_time, update_time,
+		create_time, 
+		update_time,
 		role_id, token)
-		values
-		(#{userId,jdbcType=VARCHAR}, #{userAccount,jdbcType=VARCHAR},
+		VALUES
+		(#{userId,jdbcType=VARCHAR}, 
+		#{userAccount,jdbcType=VARCHAR},
 		#{userPassword,jdbcType=VARCHAR},
 		#{userNickname,jdbcType=VARCHAR},
-		#{mobilePhone,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR},
-		#{userStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+		#{mobilePhone,jdbcType=VARCHAR}, 
+		#{sex,jdbcType=VARCHAR},
+		#{userStatus,jdbcType=INTEGER}, 
+		#{createTime,jdbcType=TIMESTAMP},
 		#{updateTime,jdbcType=TIMESTAMP},
 		#{roleId,jdbcType=VARCHAR},
 		#{token,jdbcType=VARCHAR})
 	</insert>
 
-
+	<!--prefix:在trim标签内sql语句加上前缀。
+		suffix:在trim标签内sql语句加上后缀。
+		suffixOverrides:指定去除多余的后缀内容，如：suffixOverrides=","，去除trim标签内sql语句多余的后缀","
+		prefixOverrides:指定去除多余的前缀内容
+	 -->
 	<insert id="insertSelective"
 		parameterType="pers.lihuan.authweb.model.User">
-		insert into sys_user
+		INSERT INTO sys_user
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="userId != null">
 				user_id,
@@ -144,14 +160,16 @@
 	</insert>
 
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-		delete from
+		DELETE FROM
 		sys_user
-		where user_id = #{userId,jdbcType=VARCHAR}
+		WHERE 
+		user_id = #{userId,jdbcType=VARCHAR}
 	</delete>
-
+	
+	<!-- 在更新操作中 <set>可自动把最后一个","去掉 -->
 	<update id="updateByPrimaryKeySelective"
 		parameterType="pers.lihuan.authweb.model.User">
-		update sys_user
+		UPDATE sys_user
 		<set>
 			<if test="userAccount != null">
 				user_account = #{userAccount,jdbcType=VARCHAR},
@@ -184,7 +202,7 @@
 				token = #{token,jdbcType=VARCHAR},
 			</if>
 		</set>
-		where user_id = #{userId,jdbcType=VARCHAR}
+		WHERE user_id = #{userId,jdbcType=VARCHAR}
 	</update>
 
 </mapper>

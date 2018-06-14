@@ -20,6 +20,7 @@ import pers.lihuan.authweb.utils.UUIDUtil;
 
 /*
  * author : LH 2018-05-20 PM
+ * 用户管理
  */
 @Service(value="userService")
 public class UserServiceImpl implements UserService {
@@ -49,7 +50,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean addUser(User user) throws BusinessException {
-		if(getUserByUserName(user.getUserAccount())!=null){
+		if(getUserByUserName(user.getUserAccount()) != null){
 			throw new BusinessException("账号已经存在");
 		}
 		user.setUserId(UUIDUtil.randomUUID8());

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import pers.lihuan.authweb.common.PageResult;
 import pers.lihuan.authweb.common.ResultEntity;
+import pers.lihuan.authweb.common.authz.AuthUtil;
 import pers.lihuan.authweb.common.authz.annotation.RequiresPermissions;
 import pers.lihuan.authweb.common.authz.annotation.RequiresRoles;
 import pers.lihuan.authweb.exception.BusinessException;
@@ -21,6 +22,7 @@ import pers.lihuan.authweb.model.MenuTree;
 import pers.lihuan.authweb.model.Permission;
 import pers.lihuan.authweb.service.AuthService;
 import pers.lihuan.authweb.service.PermissionService;
+import pers.lihuan.authweb.utils.JSONUtil;
 
 /*
  * author : LH 2018-05-21 PM
@@ -118,10 +120,13 @@ public class PermissionController {
 	@RequiresRoles("admin")
 	@PutMapping("/tree")
 	public ResultEntity updateRolePermission(String roleId, String permissionIds) {
-		if (permissionService.updateRolePermission(roleId, permissionIds))
-			return ResultEntity.ok("更新角色权限成功!!!");
-		else
-			return ResultEntity.error("更新角色权限失败!!!");
+		List<String> list = JSONUtil.parseArray(permissionIds);
+		if(authService.updateRolePermission(roleId, list)){
+			AuthUtil.getInstance().updateCachePermission();
+			return ResultEntity.ok("修改成功");
+		}else{
+			return ResultEntity.error("修改失败");
+		}
 	}
 	
 	

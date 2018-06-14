@@ -1,38 +1,49 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pers.lihuan.authweb.dao.LoginRecordMapper" >
-  
-  <resultMap id="BaseResultMap" type="pers.lihuan.authweb.model.LoginRecord" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="user_id" property="userId" jdbcType="VARCHAR" />
-    <result column="os_name" property="osName" jdbcType="VARCHAR" />
-    <result column="device" property="device" jdbcType="VARCHAR" />
-    <result column="browser_type" property="browserType" jdbcType="VARCHAR" />
-    <result column="ip_address" property="ipAddress" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <!-- 关联属性 -->
-    <result column="user_nickname" property="userNickName" jdbcType="VARCHAR" />
-    <result column="user_account" property="userAccount" jdbcType="VARCHAR" />
-  </resultMap>
+<mapper namespace="pers.lihuan.authweb.dao.LoginRecordMapper">
 
-  <!-- 查询登录日志 -->
-  <!-- &gt; 大于  &lg; 小于  &amp; 和&    &apos; 单引号   &quot; 双引号 -->
-  <select id="selectLoginRecords" resultMap="BaseResultMap" parameterType="string">
-  SELECT a.*,b.user_nickname,b.user_account FROM sys_login_record a,sys_user b WHERE a.user_id=b.user_id 
-  <if test="startDate != null">
-	AND a.create_time&gt;=#{startDate}
-  </if>
-  <if test="endDate != null">
-	AND a.create_time&lt;=#{endDate}
-  </if>
-  <if test="searchAccount != null">
-  	AND b.user_account=#{searchAccount}
-  </if>
-  ORDER BY a.create_time DESC
-  </select>
-  
-  <insert id="insert" parameterType="pers.lihuan.authweb.model.LoginRecord">
-  	INSERT INTO sys_login_record(id,user_id,os_name,device,browser_type,ip_address,create_time)
-  	VALUES(#{id},#{userId},#{osName},#{device},#{browserType},#{ipAddress},#{createTime})
-  </insert>
+	<resultMap id="BaseResultMap"
+		type="pers.lihuan.authweb.model.LoginRecord">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="user_id" property="userId" jdbcType="VARCHAR" />
+		<result column="os_name" property="osName" jdbcType="VARCHAR" />
+		<result column="device" property="device" jdbcType="VARCHAR" />
+		<result column="browser_type" property="browserType"
+			jdbcType="VARCHAR" />
+		<result column="ip_address" property="ipAddress"
+			jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime"
+			jdbcType="TIMESTAMP" />
+		<!-- 关联属性 -->
+		<result column="user_nickname" property="userNickName"
+			jdbcType="VARCHAR" />
+		<result column="user_account" property="userAccount"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 查询登录日志 -->
+	<!-- &gt; 大于 &lg; 小于 &amp; 和& &apos; 单引号 &quot; 双引号 -->
+	<select id="selectLoginRecords" resultMap="BaseResultMap"
+		parameterType="string">
+		SELECT a.*,b.user_nickname,b.user_account FROM sys_login_record
+		a,sys_user b WHERE a.user_id=b.user_id
+		<if test="startDate != null">
+			AND a.create_time&gt;=#{startDate}
+		</if>
+		<if test="endDate != null">
+			AND a.create_time&lt;=#{endDate}
+		</if>
+		<if test="searchAccount != null">
+			AND b.user_account=#{searchAccount}
+		</if>
+		ORDER BY a.create_time DESC
+	</select>
+
+	<insert id="insert"
+		parameterType="pers.lihuan.authweb.model.LoginRecord">
+		INSERT INTO
+			sys_login_record(id,user_id,os_name,device,browser_type,ip_address,create_time)
+		VALUES
+			(#{id},#{userId},#{osName},#{device},#{browserType},#{ipAddress},#{createTime})
+	</insert>
 </mapper>

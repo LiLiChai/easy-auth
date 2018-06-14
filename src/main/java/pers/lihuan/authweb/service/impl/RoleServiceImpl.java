@@ -19,6 +19,7 @@ import pers.lihuan.authweb.utils.UUIDUtil;
 
 /*
  * author : LH 2018-05-20 PM
+ * 角色管理
  */
 @Service
 public class RoleServiceImpl implements RoleService {
