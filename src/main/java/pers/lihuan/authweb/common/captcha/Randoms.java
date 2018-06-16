@@ -3,10 +3,7 @@ package pers.lihuan.authweb.common.captcha;
 import java.util.Random;
 
 /**
- * <p>随机工具类</p>
- *
- * @author: wuhongjun
- * @version:1.0
+ * 随机工具类
  */
 public class Randoms
 {

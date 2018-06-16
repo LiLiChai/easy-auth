@@ -11,9 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import pers.lihuan.authweb.common.captcha.Captcha;
 import pers.lihuan.authweb.common.captcha.GifCaptcha;
 
-/*
- * author : LH 2018-05-19 AM
- */
 public class CaptchaServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = -90304944339413093L;

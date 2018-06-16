@@ -4,9 +4,7 @@ import pers.lihuan.authweb.common.encrypt.codec.Base64;
 import pers.lihuan.authweb.common.encrypt.codec.Hex;
 import pers.lihuan.authweb.common.encrypt.crypto.hash.Md5Hash;
 import pers.lihuan.authweb.common.encrypt.utils.AESUtil;
-/*
- * author : LH 2018-05-18 PM
- */
+
 public class EncryptUtils {
 	/**
 	 * 将字符串转换成base64编码
@@ -22,9 +20,6 @@ public class EncryptUtils {
 
 	/**
 	 * 将base64编码转换成字符串
-	 * 
-	 * @param cipherText
-	 * @return
 	 */
 	public static String decryptBase64(String cipherText) {
 		try {

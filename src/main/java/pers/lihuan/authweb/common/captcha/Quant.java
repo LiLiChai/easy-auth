@@ -1,11 +1,5 @@
 package pers.lihuan.authweb.common.captcha;
 
-/**
- * <p></p>
- *
- * @author: wuhongjun
- * @version:1.0
- */
 public class Quant
 {
     protected static final int netsize = 256; /* number of colours used */
@@ -18,22 +12,6 @@ public class Quant
     protected static final int prime4 = 503;
 
     protected static final int minpicturebytes = (3 * prime4);
-	/* minimum size for input image */
-
-	/* Program Skeleton
-	   ----------------
-	   [select samplefac in range 1..30]
-	   [read image from input file]
-	   pic = (unsigned char*) malloc(3*width*height);
-	   initnet(pic,3*width*height,samplefac);
-	   learn();
-	   unbiasnet();
-	   [write output image header, using writecolourmap(f)]
-	   inxbuild();
-	   write output image using inxsearch(b,g,r)      */
-
-	/* Network Definitions
-	   ------------------- */
 
     protected static final int maxnetpos = (netsize - 1);
     protected static final int netbiasshift = 4; /* bias for colour values */

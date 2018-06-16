@@ -12,27 +12,9 @@ public class Encoder
     private int remaining;
     private int curPixel;
 
-    // GIFCOMPR.C       - GIF Image compression routines
-    //
-    // Lempel-Ziv compression based on 'compress'.  GIF modifications by
-    // David Rowley (mgardi@watdcsu.waterloo.edu)
-
-    // General DEFINEs
-
     static final int BITS = 12;
 
     static final int HSIZE = 5003; // 80% occupancy
-
-    // GIF Image compression - modified 'compress'
-    //
-    // Based on: compress.c - File compression ala IEEE Computer, June 1984.
-    //
-    // By Authors:  Spencer W. Thomas      (decvax!harpo!utah-cs!utah-gr!thomas)
-    //              Jim McKie              (decvax!mcvax!jim)
-    //              Steve Davies           (decvax!vax135!petsd!peora!srd)
-    //              Ken Turkowski          (decvax!decwrl!turtlevax!ken)
-    //              James A. Woods         (decvax!ihnp4!ames!jaw)
-    //              Joe Orost              (decvax!vax135!petsd!joe)
 
     int n_bits; // number of bits/code
     int maxbits = BITS; // user settable max # bits/code
@@ -46,41 +28,12 @@ public class Encoder
 
     int free_ent = 0; // first unused entry
 
-    // block compression parameters -- after all codes are used up,
-    // and compression rate changes, start over.
     boolean clear_flg = false;
-
-    // Algorithm:  use open addressing double hashing (no chaining) on the
-    // prefix code / next character combination.  We do a variant of Knuth's
-    // algorithm D (vol. 3, sec. 6.4) along with G. Knott's relatively-prime
-    // secondary probe.  Here, the modular division first probe is gives way
-    // to a faster exclusive-or manipulation.  Also do block compression with
-    // an adaptive reset, whereby the code table is cleared when the compression
-    // ratio decreases, but after the table fills.  The variable-length output
-    // codes are re-sized at this point, and a special CLEAR code is generated
-    // for the decompressor.  Late addition:  construct the table according to
-    // file size for noticeable speed improvement on small files.  Please direct
-    // questions about this implementation to ames!jaw.
 
     int g_init_bits;
 
     int ClearCode;
     int EOFCode;
-
-    // output
-    //
-    // Output the given code.
-    // Inputs:
-    //      code:   A n_bits-bit integer.  If == -1, then EOF.  This assumes
-    //              that n_bits =< wordsize - 1.
-    // Outputs:
-    //      Outputs code to the file.
-    // Assumptions:
-    //      Chars are 8 bits long.
-    // Algorithm:
-    //      Maintain a BITS character long buffer (so that 8 codes will
-    // fit in it exactly).  Use the VAX insv instruction to insert each
-    // code in turn.  When the buffer fills up empty it and start over.
 
     int cur_accum = 0;
     int cur_bits = 0;
