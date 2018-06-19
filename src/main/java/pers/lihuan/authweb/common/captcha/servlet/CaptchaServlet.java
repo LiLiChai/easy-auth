@@ -8,17 +8,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import pers.lihuan.authweb.common.captcha.Captcha;
 import pers.lihuan.authweb.common.captcha.GifCaptcha;
 
 public class CaptchaServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = -90304944339413093L;
-
+	private static final Logger logger = LoggerFactory.getLogger(CaptchaServlet.class);
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		logger.debug("start produce veryCode!!!");
 		//获取codeKey
         String codeKey = request.getParameter("codeKey");
         if(codeKey==null||codeKey.trim().isEmpty()){
@@ -35,7 +39,7 @@ public class CaptchaServlet extends HttpServlet {
         // 存入servletContext
         ServletContext servletContext = request.getSession().getServletContext();
         servletContext.setAttribute("code_"+codeKey, captcha.text().toLowerCase());
-        
+        logger.debug("start send veryCode" + codeKey + "=====> " + captcha.text().toLowerCase());
         //输入图片
         captcha.out(response.getOutputStream());
 	}

@@ -47,8 +47,8 @@ public class LoginController extends BaseController {
 		
 		if (!StringUtil.isBlank(userName, password, captchaValue, captchaKey))
 			return ResultEntity.error("输入存在空白！！！");
-		if (!CaptchaUtil.checkCaptcha(captchaKey, captchaValue, request))
-			return ResultEntity.error("验证码输入错误！！！");
+//		if (!CaptchaUtil.checkCaptcha(captchaKey, captchaValue, request))
+//			return ResultEntity.error("验证码输入错误！！！");
 
 		User user = userService.getUserByUserName(userName);
 		if (user == null)
