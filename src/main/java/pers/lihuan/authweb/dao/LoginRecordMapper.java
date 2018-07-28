@@ -14,4 +14,9 @@ public interface LoginRecordMapper {
 	public List<LoginRecord> selectLoginRecords(@Param("startDate") String startDate, @Param("endDate") String endDate,
 			@Param("searchAccount") String searchAccount);
 	int insert(LoginRecord loginRecord);
+	public List<LoginRecord> selectLoginRecords2(
+			@Param("pageIndex") int pageIndex,@Param("pageSize") 
+			int pageSize,@Param("startDate") String startDate, @Param("endDate") String endDate,
+			@Param("searchAccount") String searchAccount);
+	public Integer selectLoginRecords3();
 }

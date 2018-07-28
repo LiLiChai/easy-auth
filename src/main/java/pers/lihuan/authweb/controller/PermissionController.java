@@ -119,8 +119,8 @@ public class PermissionController {
 	 */
 	@RequiresRoles("admin")
 	@PutMapping("/tree")
-	public ResultEntity updateRolePermission(String roleId, String permissionIds) {
-		List<String> list = JSONUtil.parseArray(permissionIds);
+	public ResultEntity updateRolePermission(String roleId, String permIds) {
+		List<String> list = JSONUtil.parseArray(permIds);
 		if(authService.updateRolePermission(roleId, list)){
 			AuthUtil.getInstance().updateCachePermission();
 			return ResultEntity.ok("修改成功");

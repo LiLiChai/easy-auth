@@ -8,4 +8,5 @@ import pers.lihuan.authweb.model.LoginRecord;
 public interface LoginRecordService {
 	boolean addLoginRecord(LoginRecord loginRecord);
 	PageResult<LoginRecord> getLoginRecords(int pageIndex, int pageSize, String startDate, String endDate, String searchAccount);
+
 }

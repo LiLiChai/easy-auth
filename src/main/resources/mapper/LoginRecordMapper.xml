@@ -38,6 +38,27 @@
 		</if>
 		ORDER BY a.create_time DESC
 	</select>
+	
+	<select id="selectLoginRecords2" resultMap="BaseResultMap"
+		parameterType="string">
+		SELECT a.*,b.user_nickname,b.user_account FROM sys_login_record
+		a,sys_user b WHERE a.user_id=b.user_id
+		<if test="startDate != null">
+			AND a.create_time&gt;=#{startDate}
+		</if>
+		<if test="endDate != null">
+			AND a.create_time&lt;=#{endDate}
+		</if>
+		<if test="searchAccount != null">
+			AND b.user_account=#{searchAccount}
+		</if>
+		 ORDER BY a.create_time DESC LIMIT #{pageIndex}, #{pageSize}
+	</select>
+	
+	<select id="selectLoginRecords3" resultType="java.lang.Integer"
+		parameterType="string">
+		SELECT COUNT(*) FROM sys_login_record
+	</select>
 
 	<insert id="insert"
 		parameterType="pers.lihuan.authweb.model.LoginRecord">

@@ -18,7 +18,7 @@ import pers.lihuan.authweb.utils.UUIDUtil;
 
 /**
  * author : lh 2018-06-14 AM
- * 管理角色权限
+ * 管理角色权限 菜单实现
  */
 @Service(value="authService")
 public class AuthServiceImpl implements AuthService {

@@ -42,7 +42,7 @@ public class PermissionServiceImpl implements PermissionService {
 				}
 				one1.setSubMenus(submenu);
 				results.add(one1);
-			}
+			} 
 		}
 		return results;
 	}

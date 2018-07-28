@@ -38,6 +38,10 @@ public class LoginRecordServiceImpl implements LoginRecordService {
 		Page<Object> startPage = PageHelper.startPage(pageIndex, pageSize);
 		List<LoginRecord> list = loginRecordMapper.selectLoginRecords(startDate,endDate,searchAccount);
 		return new PageResult<LoginRecord>(startPage.getTotal(), list);
+//		Integer i = loginRecordMapper.selectLoginRecords3();
+//		pageIndex = (pageIndex - 1)*pageSize;
+//		List<LoginRecord> list = loginRecordMapper.selectLoginRecords2(pageIndex, pageSize, startDate,endDate,searchAccount);
+//		return new PageResult<LoginRecord>(18, list);
 	}
 	
 }
