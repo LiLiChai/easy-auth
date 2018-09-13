@@ -8,18 +8,17 @@
            http://www.springframework.org/schema/context/spring-context.xsd
            http://www.springframework.org/schema/aop 
            http://www.springframework.org/schema/aop/spring-aop.xsd ">
-	<!-- 扫描service -->
-	<context:component-scan base-package="pers.lihuan.authweb.service.impl" />
-	<context:component-scan base-package="pers.lihuan.authweb.auth" />
 
+	<!-- 目标对象 -->
+	<bean id="service" class="pers.lihuan.authweb.aop.ServiceImpl"/>
 	<!-- 切面bean -->
 	<bean id="myAdvance" class="pers.lihuan.authweb.aop.MyAdvance"/>
-
+	<bean id="myAdvance2" class="pers.lihuan.authweb.aop.MyAdvance2"/>
 	<!-- 面向切面编程 -->
 	<aop:config>
-		<aop:aspect ref="myAdvance">
+		<aop:aspect ref="myAdvance2" order="1">
 			<!-- 定义切点 -->
-			<aop:pointcut expression="execution(* *.add*(..))" id="mypoint"/>
+			<aop:pointcut expression="execution(* *.doSomething(..))" id="mypoint"/>
 			<!-- 声明前置通知 (在切点方法被执行前调用)-->
 			<!--<aop:before method="beforSay" pointcut-ref="embark"/>-->
 			<aop:around method="beforSay" pointcut-ref="mypoint"/>
@@ -27,7 +26,15 @@
 			<aop:after method="afterSay" pointcut-ref="mypoint"/>
 		</aop:aspect>
 	</aop:config>
-	
-	<import resource="spring-mybatis.xml" />
-	<import resource="spring-redis.xml"/>
+	<aop:config>
+		<aop:aspect ref="myAdvance" order="2">
+			<!-- 定义切点 -->
+			<aop:pointcut expression="execution(* *.doSomething(..))" id="mypoint2"/>
+			<!-- 声明前置通知 (在切点方法被执行前调用)-->
+			<!--<aop:before method="beforSay" pointcut-ref="embark"/>-->
+			<aop:around method="beforSay" pointcut-ref="mypoint2"/>
+			<!-- 声明后置通知 (在切点方法被执行后调用)-->
+			<aop:after method="afterSay" pointcut-ref="mypoint2"/>
+		</aop:aspect>
+	</aop:config>
 </beans> 
