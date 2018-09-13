@@ -27,7 +27,8 @@
 			<aop:after method="afterSay" pointcut-ref="mypoint"/>
 		</aop:aspect>
 	</aop:config>
-	
+
+
 	<import resource="spring-mybatis.xml" />
 	<import resource="spring-redis.xml"/>
 </beans> 
