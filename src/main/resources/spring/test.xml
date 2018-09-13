@@ -26,6 +26,7 @@
 			<aop:after method="afterSay" pointcut-ref="mypoint"/>
 		</aop:aspect>
 	</aop:config>
+
 	<aop:config>
 		<aop:aspect ref="myAdvance" order="2">
 			<!-- 定义切点 -->

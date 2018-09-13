@@ -20,6 +20,7 @@ public class MyAdvance2 {
 
     }
 
+
     public void afterSay() {
         System.out.println("后置通知2");
     }

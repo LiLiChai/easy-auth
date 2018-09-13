@@ -16,4 +16,5 @@ public class Test2 {
         ServiceImpl br = (ServiceImpl) ac.getBean("service");
         br.doSomething("hello aop");
     }
+
 }
