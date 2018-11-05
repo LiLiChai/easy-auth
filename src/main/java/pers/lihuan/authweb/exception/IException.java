@@ -1,7 +1,7 @@
 package pers.lihuan.authweb.exception;
 
-/*
- * author : LH 2018-05-21 AM
+/**
+ * @author Fancy
  */
 public abstract class IException extends Exception {
 	private static final long serialVersionUID = -1582874427218948396L;

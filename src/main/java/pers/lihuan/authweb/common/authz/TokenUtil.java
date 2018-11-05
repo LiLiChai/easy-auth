@@ -12,6 +12,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 /**
  * Token工具类
+ * @author Fancy
  */
 public class TokenUtil {
 

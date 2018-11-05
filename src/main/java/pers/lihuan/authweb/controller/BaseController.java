@@ -2,8 +2,8 @@ package pers.lihuan.authweb.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-/*
- * author : LH 2018-05-18 AM
+/**
+ * @author Fancy
  */
 public class BaseController {
 	

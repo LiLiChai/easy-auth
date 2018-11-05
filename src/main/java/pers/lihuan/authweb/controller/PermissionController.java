@@ -24,8 +24,8 @@ import pers.lihuan.authweb.service.AuthService;
 import pers.lihuan.authweb.service.PermissionService;
 import pers.lihuan.authweb.utils.JSONUtil;
 
-/*
- * author : LH 2018-05-21 PM
+/**
+ * @author Fancy
  */
 @RestController
 @RequestMapping("/api/permission")

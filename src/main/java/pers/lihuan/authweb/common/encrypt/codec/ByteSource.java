@@ -7,6 +7,7 @@ import java.io.InputStream;
  * A {@code ByteSource} wraps a byte array and provides additional encoding operations.  Most users will find the
  * {@link Util} inner class sufficient to construct ByteSource instances.
  *
+ * @author Fancy
  * @since 1.0
  */
 public interface ByteSource {

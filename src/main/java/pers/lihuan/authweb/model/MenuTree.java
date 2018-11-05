@@ -2,6 +2,7 @@ package pers.lihuan.authweb.model;
 
 /**
  * 菜单树
+ * @author Fancy
  */
 public class MenuTree {
 

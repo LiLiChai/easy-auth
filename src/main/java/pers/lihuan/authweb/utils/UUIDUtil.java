@@ -4,6 +4,7 @@ import java.util.UUID;
 
 /**
  *通过UUID生成唯一ID
+ * @author Fancy
  */
 public class UUIDUtil {
 	

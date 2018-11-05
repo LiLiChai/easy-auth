@@ -10,6 +10,7 @@ package pers.lihuan.authweb.common.encrypt.codec;
  * As per the Apache 2.0 license, the original copyright notice and all author and copyright information have
  * remained in tact.
  *
+ * @author Fancy
  * @see <a href="http://en.wikipedia.org/wiki/Hexadecimal">Wikipedia: Hexadecimal</a>
  * @since 0.9
  */

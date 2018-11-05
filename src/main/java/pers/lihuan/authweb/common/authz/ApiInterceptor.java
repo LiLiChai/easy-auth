@@ -16,6 +16,7 @@ import pers.lihuan.authweb.common.authz.exception.UnauthorizedException;
 
 /**
  * 处理基于token请求的拦截器
+ * @author Fancy
  */
 public class ApiInterceptor implements HandlerInterceptor {
 

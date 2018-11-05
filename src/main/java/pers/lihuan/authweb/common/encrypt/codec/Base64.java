@@ -14,6 +14,7 @@ package pers.lihuan.authweb.common.encrypt.codec;
  * As per the Apache 2.0 license, the original copyright notice and all author and copyright information have
  * remained in tact.
  *
+ * @author Fancy
  * @see <a href="http://en.wikipedia.org/wiki/Base64">Wikipedia: Base 64</a>
  * @see <a href="http://www.ietf.org/rfc/rfc2045.txt">RFC 2045</a>
  * @since 0.9

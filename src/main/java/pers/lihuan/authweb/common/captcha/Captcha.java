@@ -6,13 +6,20 @@ import java.io.OutputStream;
 
 /**
  * 验证码抽象类,暂时不支持中文
+ * @author Fancy
  */
 public abstract class Captcha extends Randoms {
-	protected Font font = new Font("Verdana", Font.ITALIC | Font.BOLD, 28); // 字体
-	protected int len = 5; // 验证码随机字符长度
-	protected int width = 150; // 验证码显示跨度
-	protected int height = 40; // 验证码显示高度
-	private String chars = null; // 随机字符串
+
+	// 字体
+	protected Font font = new Font("Verdana", Font.ITALIC | Font.BOLD, 28);
+	// 验证码随机字符长度
+	protected int len = 5;
+	// 验证码显示跨度
+	protected int width = 150;
+	// 验证码显示高度
+	protected int height = 40;
+	// 随机字符串
+	private String chars = null;
 
 	/**
 	 * 生成随机字符数组

@@ -2,8 +2,9 @@ package pers.lihuan.authweb.model;
 
 import java.io.Serializable;
 import java.util.Date;
-/*
- * author : LH 2018-05-18 PM
+
+/**
+ * @author Fancy
  */
 public class User implements Serializable{
 	

@@ -5,6 +5,9 @@ import pers.lihuan.authweb.common.encrypt.codec.Hex;
 import pers.lihuan.authweb.common.encrypt.crypto.hash.Md5Hash;
 import pers.lihuan.authweb.common.encrypt.utils.AESUtil;
 
+/**
+ * @author Fancy
+ */
 public class EncryptUtils {
 	/**
 	 * 将字符串转换成base64编码

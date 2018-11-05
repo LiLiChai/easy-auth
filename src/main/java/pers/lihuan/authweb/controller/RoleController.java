@@ -18,8 +18,8 @@ import pers.lihuan.authweb.exception.BusinessException;
 import pers.lihuan.authweb.exception.ParameterException;
 import pers.lihuan.authweb.model.Role;
 import pers.lihuan.authweb.service.RoleService;
-/*
- * author : LH 2018-05-21 AM
+/**
+ * @author Fancy
  */
 @RestController
 @RequestMapping("api/role")

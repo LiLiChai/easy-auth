@@ -3,6 +3,9 @@ package pers.lihuan.authweb.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Fancy
+ */
 public class RolePermissionExample {
     
 	protected String orderByClause;

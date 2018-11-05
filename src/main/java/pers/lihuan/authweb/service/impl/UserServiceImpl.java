@@ -18,8 +18,8 @@ import pers.lihuan.authweb.model.User;
 import pers.lihuan.authweb.service.UserService;
 import pers.lihuan.authweb.utils.UUIDUtil;
 
-/*
- * author : LH 2018-05-20 PM
+/**
+ * @author Fancy
  * 用户管理
  */
 @Service(value="userService")

@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * JSON解析工具类
+ * @author Fancy
  */
 public class JSONUtil {
 	private final static ObjectMapper objectMapper = new ObjectMapper();

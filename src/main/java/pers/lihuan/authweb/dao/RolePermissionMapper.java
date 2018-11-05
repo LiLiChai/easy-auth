@@ -7,6 +7,9 @@ import org.apache.ibatis.annotations.Param;
 import pers.lihuan.authweb.model.RolePermission;
 import pers.lihuan.authweb.model.RolePermissionExample;
 
+/**
+ * @author Fancy
+ */
 public interface RolePermissionMapper {
     
 	int countByExample(RolePermissionExample example);

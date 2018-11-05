@@ -25,8 +25,8 @@ import pers.lihuan.authweb.utils.DateUtil;
 import pers.lihuan.authweb.utils.StringUtil;
 import pers.lihuan.authweb.utils.UserAgentGetter;
 
-/*
- * author : lh 2018-05-18 AM
+/**
+ * @author Fancy
  */
 @RestController
 @RequestMapping("/api")

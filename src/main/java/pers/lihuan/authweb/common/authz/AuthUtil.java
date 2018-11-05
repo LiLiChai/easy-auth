@@ -17,11 +17,16 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * 权限检查工具类
+ * @author Fancy
  */
 public class AuthUtil {
-	private static final String KEY_PRE_PS = "etpps-"; // 权限缓存的key前缀
-	private static final String KEY_PRE_RS = "etprs-"; // 角色缓存的key前缀
-	private static final String KEY_PRE_TOKEN = "etp-"; // token缓存的key前缀
+
+	// 权限缓存的key前缀
+	private static final String KEY_PRE_PS = "etpps-";
+	// 角色缓存的key前缀
+	private static final String KEY_PRE_RS = "etprs-";
+	// token缓存的key前缀
+	private static final String KEY_PRE_TOKEN = "etp-";
 	private static volatile AuthUtil instance;
 	private static IUserRealm userRealm;
 	private static IEtpCache cache;

@@ -14,8 +14,8 @@ import org.springframework.data.redis.core.ScanOptions;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 
-/*
- * redis的一些常用操作
+/**
+ * @author Fancy
  */
 public class RedisUtil {
 	

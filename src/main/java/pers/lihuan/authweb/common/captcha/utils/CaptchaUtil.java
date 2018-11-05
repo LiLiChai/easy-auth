@@ -3,9 +3,11 @@ package pers.lihuan.authweb.common.captcha.utils;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * @author Fancy
+ */
 public class CaptchaUtil {
 
-	//check vercode 
 	public static boolean isVerified(String verKey, String verCode,
 			HttpServletRequest request) {
 		ServletContext servletContext = request.getSession()

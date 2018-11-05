@@ -3,8 +3,9 @@ package pers.lihuan.authweb.utils;
 import javax.servlet.http.HttpServletRequest;
 
 import eu.bitwalker.useragentutils.UserAgent;
-/*
- * author : LH 2018-05-18 PM
+
+/**
+ * @author Fancy
  */
 public class UserAgentGetter {
 	

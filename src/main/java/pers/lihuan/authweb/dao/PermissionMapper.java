@@ -7,8 +7,8 @@ import org.apache.ibatis.annotations.Param;
 import pers.lihuan.authweb.model.Permission;
 import pers.lihuan.authweb.model.PermissionExample;
 
-/*
- * author : LH 2018-05-20 AM
+/**
+ * @author Administrator
  */
 public interface PermissionMapper {
 
@@ -21,12 +21,21 @@ public interface PermissionMapper {
 	List<Permission> selectButtonParent();
 	
 	int insertSelective(Permission permission);
-	
-	
-	//以下是更新方法
+
+
+	/**以下是更新方法
+	 *
+	 * @param permission
+	 * @return
+	 */
 	int updateByPrimaryKeySelective(Permission permission);//更新Permission
-	
-	//以下是删除方法
+
+	/**
+	 * 以下是删除方法
+	 *
+	 * @param permissionId
+	 * @return
+	 */
 	int deleteByPrimaryKey(String permissionId);
 	
 }

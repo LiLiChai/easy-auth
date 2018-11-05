@@ -2,8 +2,8 @@ package pers.lihuan.authweb.common;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-/*
- * author : LH 2018-05-18 PM
+/**
+ * @author Fancy
  */
 public class CaptchaUtil {
 	

@@ -3,10 +3,12 @@ package pers.lihuan.authweb.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-/*
- * author : LH 2018-05-20 PM
+
+/**
+ * @author Fancy
  */
 public class RoleExample {
+    
     protected String orderByClause;
 
     protected boolean distinct;

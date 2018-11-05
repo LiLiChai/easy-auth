@@ -10,8 +10,8 @@ import pers.lihuan.authweb.model.LoginRecord;
 import pers.lihuan.authweb.service.LoginRecordService;
 import pers.lihuan.authweb.utils.StringUtil;
 
-/*
- * author : LH 2018-05-21 PM
+/**
+ * @author Fancy
  */
 @RestController
 @RequestMapping("api/loginRecord")

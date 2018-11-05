@@ -4,8 +4,9 @@ import pers.lihuan.authweb.common.PageResult;
 import pers.lihuan.authweb.exception.BusinessException;
 import pers.lihuan.authweb.exception.ParameterException;
 import pers.lihuan.authweb.model.User;
-/*
- * author : LH 2018-05-20 AM
+
+/**
+ * @author Fancy
  */
 public interface UserService {
 	

@@ -24,8 +24,8 @@ import pers.lihuan.authweb.model.User;
 import pers.lihuan.authweb.service.UserService;
 
 
-/*
- * author : LH 2018-05-20 AM
+/**
+ * @author Fancy
  */
 @RestController
 @RequestMapping("api/user")

@@ -12,8 +12,9 @@ import pers.lihuan.authweb.model.User;
 import pers.lihuan.authweb.service.PermissionService;
 import pers.lihuan.authweb.service.UserService;
 
-/*
- * author : LH 2018-05-18 PM
+
+/**
+ * @author Fancy
  */
 public class UserRealm extends IUserRealm {
 	@Autowired

@@ -1,8 +1,9 @@
 package pers.lihuan.authweb.model;
 
 import java.util.Date;
-/*
- * author : LH 2018-05-20 PM
+
+/**
+ * @author Fancy
  */
 public class Role {
    

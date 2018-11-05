@@ -2,8 +2,8 @@ package pers.lihuan.authweb.common;
 
 import java.util.HashMap;
 
-/*
- * author : LH 2018-05-18 PM
+/**
+ * @author Fancy
  */
 public class ResultEntity extends HashMap<String, Object>{
 

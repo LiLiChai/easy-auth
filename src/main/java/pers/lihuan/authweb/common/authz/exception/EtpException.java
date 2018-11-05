@@ -2,6 +2,7 @@ package pers.lihuan.authweb.common.authz.exception;
 
 /**
  * EtpException
+ * @author Fancy
  */
 public abstract class EtpException extends RuntimeException {
 	private static final long serialVersionUID = 2413958299445359500L;

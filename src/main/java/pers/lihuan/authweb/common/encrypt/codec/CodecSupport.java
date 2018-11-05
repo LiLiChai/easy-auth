@@ -8,6 +8,7 @@ import pers.lihuan.authweb.common.encrypt.exception.CodecException;
 /**
  * Base abstract class that provides useful encoding and decoding operations, especially for character data.
  *
+ * @author Fancy
  * @since 0.9
  */
 public abstract class CodecSupport {

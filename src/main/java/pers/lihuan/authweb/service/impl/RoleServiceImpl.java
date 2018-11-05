@@ -17,8 +17,8 @@ import pers.lihuan.authweb.model.RoleExample;
 import pers.lihuan.authweb.service.RoleService;
 import pers.lihuan.authweb.utils.UUIDUtil;
 
-/*
- * author : LH 2018-05-20 PM
+/**
+ * @author Administrator
  * 角色管理
  */
 @Service

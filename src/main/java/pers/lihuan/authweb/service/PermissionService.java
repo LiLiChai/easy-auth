@@ -6,8 +6,8 @@ import pers.lihuan.authweb.common.PageResult;
 import pers.lihuan.authweb.exception.BusinessException;
 import pers.lihuan.authweb.model.Permission;
 
-/*
- * author : LH 2018-05-20 PM
+/**
+ * @author Fancy
  */
 public interface PermissionService {
 	

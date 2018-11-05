@@ -1,8 +1,8 @@
 package pers.lihuan.authweb.common;
 
 import java.util.List;
-/*
- * author : LH 2018-05-20 PM
+/**
+ * @author Fancy
  */
 public class PageResult<T> {
 

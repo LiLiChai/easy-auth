@@ -14,6 +14,7 @@ import java.io.IOException;
  * <p/>
  * This file and all that it contains is ASL 2.0 compatible.
  *
+ * @author Fancy
  * @since 1.2
  */
 public class H64 {

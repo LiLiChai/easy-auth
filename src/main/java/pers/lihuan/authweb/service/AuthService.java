@@ -4,6 +4,9 @@ import java.util.List;
 
 import pers.lihuan.authweb.model.MenuTree;
 
+/**
+ * @author Fancy
+ */
 public interface AuthService {
 	/**
 	 * 根据角色id查询角色的选中和未选中权限

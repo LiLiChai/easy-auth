@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import pers.lihuan.authweb.common.authz.IEtpCache;
 import pers.lihuan.authweb.utils.RedisUtil;
 
-/*
- * author : LH 2018-05-19 PM
+
+/**
+ * @author Fancy
  */
 public class EtpCache extends IEtpCache {
+
 	@Autowired
 	private RedisUtil redisUtil;
 

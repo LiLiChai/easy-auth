@@ -13,8 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 import pers.lihuan.authweb.common.authz.exception.EtpException;
 
 
-/*
- * author : LH 2018-05-21 AM
+/**
+ * @author Fancy
  */
 public class ExceptionHandler implements HandlerExceptionResolver {
 	//日志输出对象

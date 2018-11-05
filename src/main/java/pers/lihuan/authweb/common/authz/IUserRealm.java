@@ -4,6 +4,7 @@ import java.util.Set;
 
 /**
  * User授权接口
+ * @author Fancy
  */
 public abstract class IUserRealm {
 

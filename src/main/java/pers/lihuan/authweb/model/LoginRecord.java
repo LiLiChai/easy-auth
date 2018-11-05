@@ -1,8 +1,9 @@
 package pers.lihuan.authweb.model;
 
 import java.util.Date;
-/*
- * author : LH 2018-05-18 PM
+
+/**
+ * @author Fancy
  */
 public class LoginRecord {
 	private String id;

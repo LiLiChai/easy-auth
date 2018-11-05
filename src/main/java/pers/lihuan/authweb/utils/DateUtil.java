@@ -26,8 +26,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-/*
- * author : LH 2018-05-18 PM
+/**
+ * @author Fancy
  */
 public class DateUtil {
 	/**

@@ -20,6 +20,7 @@ import java.util.Arrays;
  * <li>{@link InputStream InputStream}</li>
  * </ul>
  *
+ * @author Fancy
  * @since 1.0
  */
 public class SimpleByteSource implements ByteSource {

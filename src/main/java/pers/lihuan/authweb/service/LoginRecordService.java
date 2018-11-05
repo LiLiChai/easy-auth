@@ -2,8 +2,8 @@ package pers.lihuan.authweb.service;
 
 import pers.lihuan.authweb.common.PageResult;
 import pers.lihuan.authweb.model.LoginRecord;
-/*
- * author : LH 2018-05-20 PM
+/**
+ * @author Fancy
  */
 public interface LoginRecordService {
 	boolean addLoginRecord(LoginRecord loginRecord);

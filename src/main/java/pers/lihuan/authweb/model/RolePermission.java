@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 /**
  * 角色权限
+ * @author Fancy
  */
 public class RolePermission implements Serializable {
 	

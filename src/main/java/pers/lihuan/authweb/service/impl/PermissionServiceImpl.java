@@ -19,9 +19,8 @@ import pers.lihuan.authweb.service.PermissionService;
 import pers.lihuan.authweb.utils.StringUtil;
 import pers.lihuan.authweb.utils.UUIDUtil;
 
-/*
- * author : LH 2018-05-20 PM
- * 权限管理
+/**
+ * @author Fancy
  */
 @Service
 public class PermissionServiceImpl implements PermissionService {

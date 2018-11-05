@@ -1,7 +1,7 @@
 package pers.lihuan.authweb.utils;
 
-/*
- * author : LH 2018-05-22 PM
+/**
+ * @author Fancy
  */
 public class StringUtil {
 	

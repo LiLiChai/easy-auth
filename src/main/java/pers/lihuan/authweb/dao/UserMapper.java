@@ -5,8 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import pers.lihuan.authweb.model.User;
-/*
- * author : LH 2018-05-20 AM
+/**
+ * @author Fancy
  */
 public interface UserMapper {
 

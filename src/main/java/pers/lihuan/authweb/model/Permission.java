@@ -2,8 +2,8 @@ package pers.lihuan.authweb.model;
 
 import java.util.Date;
 import java.util.List;
-/*
- * author : LH 2018-05-19 AM
+/**
+ * @author Fancy
  */
 public class Permission {
 	
